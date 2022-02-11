@@ -1,0 +1,44 @@
+[System]
+Name='lin_fpd_strma'
+Type='sugeno'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=4
+AndMethod='prod'
+OrMethod='probor'
+ImpMethod='prod'
+AggMethod='sum'
+DefuzzMethod='wtaver'
+
+[Input1]
+Name='ę'
+Range=[-1 1]
+NumMFs=3
+MF1='NEG':'zmf',[-0.9 0.9]
+MF2='ZERO':'pimf',[-0.9 -0.1 0.1 0.9]
+MF3='POS':'smf',[-0.9 0.9]
+
+[Input2]
+Name='ęd'
+Range=[-1 1]
+NumMFs=3
+MF1='NEG':'zmf',[-0.9 0.9]
+MF2='ZERO':'pimf',[-0.9 -0.1 0.1 0.9]
+MF3='POS':'smf',[-0.9 0.9]
+
+[Output1]
+Name='ű'
+Range=[-2 2]
+NumMFs=5
+MF1='NEG_BIG':'constant',[-2]
+MF2='NEG_SMALL':'constant',[-1]
+MF3='ZERO':'constant',[0]
+MF4='POS_SMALL':'constant',[1]
+MF5='POS_BIG':'constant',[2]
+
+[Rules]
+1 1, 1 (1) : 1
+1 3, 3 (1) : 1
+3 1, 3 (1) : 1
+3 3, 5 (1) : 1
